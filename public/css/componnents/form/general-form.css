@@ -1,0 +1,25 @@
+.form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 0 auto;
+    background: var(--general-form-bg);
+}
+.form .form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+/*label*/
+.form .form-control label {
+    color: rgb(72, 72, 72);
+    font-weight: bold;
+}
+.form .form-control input, textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
