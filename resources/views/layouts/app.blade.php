@@ -26,11 +26,23 @@
         </div>
         <div class="contact-us">
             <div class="contact-us">
-                <!-- <div class="greet-user">
-                    <p class="greet-user-text">Hello, <span>Mihail</span></p>
-                </div> -->
-                <a href="/contact" class="btn">Contact Us</a>
-            </div>
+            @if (session()->has('user_name'))
+                <div class="greet-user">
+                    <p>Welcome, <span>{{ session('user_name') }}</span></p>
+                </div>
+                <!-- Logout button -->
+                <form action="{{ route('auth.logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="btn btn-no-bg">Log-out</button>
+                </form>
+            @else
+                <!-- Login button -->
+                <a href="{{ route('auth.login') }}" class="btn btn-no-bg">Login</a>
+            @endif
+
+            <!-- Contact Us button -->
+            <a href="/contact" class="btn">Contact Us</a>
+        </div>
         </div>
 
         <div class="hamburger">
@@ -40,12 +52,10 @@
         </div>
 
         <div class="dropdown_menu">
-            <li><a href="index.html" role="menuitem">About</a></li>
-            <li><a href="index.html" role="menuitem">Catalog</a></li>
-            <li><a href="index.html" role="menuitem">Team</a></li>
-            <li><a href="index.html" role="menuitem">Blog</a></li>
+            <li><a href="/about" role="menuitem">About</a></li>
+            <li><a href="/catalog" role="menuitem">Catalog</a></li>
             <div class="dropdown_menu--connection">
-                <a class="btn" href="/logout">Authentification</a>
+                <a class="btn" href="/login">Authentification</a>
             </div>
         </div>
     </nav>

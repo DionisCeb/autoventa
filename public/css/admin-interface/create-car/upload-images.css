@@ -25,14 +25,14 @@
     flex-direction: column;
   }
   
-  label {
+  .car-form label {
     font-size: 14px;
     margin-bottom: 5px;
     color: #8A624A;
   }
   
-  input,
-  select {
+  .car-form input,
+  .car-form select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;

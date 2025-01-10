@@ -1,42 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
-    <!-- <div class="loader"></div> -->
-    <nav>
-        <div class="logo">
-            <a href="/">
-                <div class="logo-img"><img src="assets/img/nav/autoventa3.png" alt="logo-deluxe-car"></div>
-            </a>
-        </div>
-        <div class="page-links">
-            <a class="nav-btn" href="/about.html">About</a>
-            <a class="nav-btn active-link" href="/catalog.html">Catalog</a>
-            <a class="nav-btn" href="">Team</a>
-            <a class="nav-btn" href="">Blog</a>
-        </div>
-        <div class="contact-us">
-            <!-- <div class="greet-user">
-                <p class="greet-user-text">Hello, <span>Mihail</span></p>
-            </div> -->
-            <a href="#" class="btn">Contact Us</a>
-        </div>
-
-        <div class="hamburger">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
-
-        <div class="dropdown_menu">
-            <li><a href="#" role="menuitem">About</a></li>
-            <li><a href="#" role="menuitem">Catalog</a></li>
-            <li><a href="#" role="menuitem">Team</a></li>
-            <li><a href="#" role="menuitem">Blog</a></li>
-            <div class="dropdown_menu--connection">
-                <a class="btn" href="/logout">Authentification</a>
-            </div>
-        </div>
-    </nav>
 
     <header class="header-img">
         <img src="{{ asset('img/gallery/collection.jpg')}}" alt="our collection">
