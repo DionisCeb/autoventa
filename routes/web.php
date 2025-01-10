@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/about', function () {
+    return view('about.index');
+});
 
 Route::get('/catalog', function () {
     return view('car.index');
