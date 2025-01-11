@@ -1,7 +1,7 @@
 :root { 
     --nav-bg: white;
     --links--nav--size: 20px;
-    --link--accent-color: rgb(197, 143, 197);
+    --link--accent-color: rgb(73, 28, 171);
     --primary-link-color-nav: rgb(80, 80, 80);
     --dropdown--menu__color: rgba(255, 255, 255, 0.6);
     --nav-box-shadow: 0 4px 2px -2px #e1e1e1;
@@ -110,6 +110,7 @@ a.nav-btn.active-nav-btn {
 .greet-user-img img{
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 /*animation*/

@@ -32,6 +32,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/profile', function () {
+    return view('profile.index');
+});
 Route::get('/about', function () {
     return view('about.index');
 });

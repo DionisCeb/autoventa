@@ -33,7 +33,7 @@
     color: var(--btn-no-bg-color);
     border: 4px solid transparent;
     border-radius: 10px;
-    border: 2px solid var(--btn-no-bg-color);
+    border: 4px solid var(--btn-no-bg-color);
 }
 
 /*btn with icon*/

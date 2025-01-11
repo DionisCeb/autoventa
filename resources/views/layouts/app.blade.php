@@ -29,19 +29,20 @@
             @if (session()->has('user_name'))
                 <div class="greet-user">
                     <p>Welcome, <span>{{ session('user_name') }}</span></p>
+                    <div class="greet-user-img"><a href="/profile"><img src="{{asset('img/nav/profile.png') }}" alt="profile"></a></div>
                 </div>
                 <!-- Logout button -->
-                <form action="{{ route('auth.logout') }}" method="POST" style="display: inline;">
+                <!-- <form action="{{ route('auth.logout') }}" method="POST" style="display: inline;">
                     @csrf
-                    <button type="submit" class="btn btn-no-bg">Log-out</button>
-                </form>
+                    <button type="submit" class="btn btn-no-bg">Logout</button>
+                </form> -->
             @else
                 <!-- Login button -->
                 <a href="{{ route('auth.login') }}" class="btn btn-no-bg">Login</a>
+                <!-- Contact Us button -->
+                <a href="/contact" class="btn">Contact Us</a>
             @endif
 
-            <!-- Contact Us button -->
-            <a href="/contact" class="btn">Contact Us</a>
         </div>
         </div>
 
