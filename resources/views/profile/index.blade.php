@@ -74,12 +74,17 @@
                 </div>
                 <img src="https://img.icons8.com/?size=100&id=98971&format=png&color=000000" alt="arrow right">
             </div>
+            <!-- Logout button -->
             <div class="link logout">
                 <div class="link-item">
                     <i class="fa-solid fa-right-from-bracket"></i>
-                    <p>Logout</p>
+                    <form action="{{ route('auth.logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="">Logout</button>
+                    </form>
                 </div>
             </div>
+            
         </div>
     </article>
 </main>

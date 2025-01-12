@@ -58,7 +58,7 @@ class AuthController extends Controller
              session(['user_name' => $user->name]);
  
              // Redirect to catalog page after successful login
-             return redirect('/catalog')->with('success', 'Login successful!');
+             return redirect('/profile')->with('success', 'Login successful!');
          }
  
          // If login fails, redirect back with error message
