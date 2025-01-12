@@ -3,7 +3,7 @@
     --links--nav--size: 20px;
     --link--accent-color: rgb(73, 28, 171);
     --primary-link-color-nav: rgb(80, 80, 80);
-    --dropdown--menu__color: rgba(255, 255, 255, 0.6);
+    --dropdown--menu__color: white;
     --nav-box-shadow: 0 4px 2px -2px #e1e1e1;
    
 }
@@ -111,6 +111,31 @@ a.nav-btn.active-nav-btn {
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
+}
+
+/*greet-user mobile*/
+.greet-user-mobile {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.greet-user-mobile span,
+.greet-user-mobile p {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.greet-user-mobile .greet-user-img {
+    width: 50px;
+    height: 50px;
+}
+
+.greet-user-mobile span {
+    color: var(--link--accent-color);
 }
 
 /*animation*/
@@ -351,6 +376,7 @@ a.dropdown-btn:hover {
        left: 0px;
        right: 0px;
        top: 140px;
+       height: 100dvh;
        width: unset;
    } 
 

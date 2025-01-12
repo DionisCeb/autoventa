@@ -53,11 +53,23 @@
         </div>
 
         <div class="dropdown_menu">
+            @if (session()->has('user_name'))
+                    <div class="greet-user-mobile">
+                        <p>Welcome, <span>{{ session('user_name') }}</span></p>
+                        <div class="greet-user-img"><a href="/profile"><img src="{{asset('img/nav/profile.png') }}" alt="profile"></a></div>
+                    </div>
+            @else
+                <!-- Login button -->
+                <a href="{{ route('auth.login') }}" class="btn btn-no-bg">Login</a>
+            @endif
+            <li><a href="/" role="menuitem">Home</a></li>
             <li><a href="/about" role="menuitem">About</a></li>
             <li><a href="/catalog" role="menuitem">Catalog</a></li>
-            <div class="dropdown_menu--connection">
+            <li><a href="/contact" role="menuitem">Contact</a></li>
+            <!-- <div class="dropdown_menu--connection">
                 <a class="btn" href="/login">Authentification</a>
-            </div>
+            </div> -->
+           
         </div>
     </nav>
 <body>
