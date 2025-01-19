@@ -54,3 +54,16 @@ Route::get('/contact', function () {
 Route::get('/attributions', function () {
     return view('legal.attributions');
 });
+
+
+/**
+ * Admin features
+ */
+
+ /**
+  * Create car
+  */
+
+  Route::get('/car/create', function () {
+    return view('car.create');
+});
