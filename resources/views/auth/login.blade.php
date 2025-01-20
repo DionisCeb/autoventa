@@ -4,13 +4,16 @@
 
 
 <!-- Display success or error messages -->
-@if (session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
-    @endif
-
-    @if ($errors->any())
-        <p style="color: red;">{{ $errors->first('email') }}</p>
-@endif
+@if(!$errors->isEmpty())
+    <div class="alert error" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>     
+        <button type="button" class="btn-close">X</button>
+    </div>                
+@endif 
 
 <header class="mt-50">
     <h1 class="flex-center">Login</h1>

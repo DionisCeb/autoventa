@@ -76,7 +76,7 @@
     padding: 10px;
     color: white;
     font-weight: bolder;
-    background-color: rgb(197 125 125);
+    background-color: var(--error-color);
     border-radius: 5px;
 }
 

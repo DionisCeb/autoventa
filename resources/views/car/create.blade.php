@@ -4,7 +4,7 @@
 
 <main class="flex-center">
     <section class="structure">
-        <form class="container-form_sides" action="{{ route('car.store') }}" method="POST">
+        <form class="container-form_sides" action="{{ route('car.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="image_container">
                 <!-- Main Image Section -->
@@ -12,7 +12,10 @@
                     <h3>Main Image</h3>
                     <div class="upload-box">
                         <img src="{{ asset('img/administration/upload.png') }}" alt="Upload Icon" class="upload-icon">
-                       <!--  <input class="browse-button" type="file" name="main_image" id="main_image" accept="image/*"> -->
+                        <input class="browse-button" type="file" name="main_image" id="main_image">
+                        @error('main_image')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             
@@ -24,7 +27,10 @@
                         <div class="thumbnail"><img src="{{ asset('img/administration/placeholder.png') }}" alt="Image Placeholder"></div>
                         <div class="thumbnail"><img src="{{ asset('img/administration/placeholder.png') }}" alt="Image Placeholder"></div>
                     </div>
-                    <!-- <input class="browse-button" type="file" id="additional-images" name="additional_images[]" accept="image/*"> -->
+                    <input class="browse-button" type="file" id="additional-images" name="additional_images[]" multiple>
+                    @error('additional_images.*')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form-container">

@@ -32,4 +32,13 @@ class Car extends Model
         'drive_type',
         'car_condition',
     ];
+
+    /**
+     * Relationship: A car has many images.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
 }

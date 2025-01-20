@@ -156,5 +156,20 @@
         </div>
     </div>
 </footer>
+
+
+<!-----General script for modules------>
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const closeButtons = document.querySelectorAll(".btn-close");
+
+        closeButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const alert = this.parentElement;
+                alert.classList.add("hide");
+            });
+        });
+    });
+</script>
 </body>
 </html>

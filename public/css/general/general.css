@@ -2,9 +2,8 @@
 @import url(utils/utils.css);
 @import url(animation/animation.css);
 @import url(typo/typograpghy.css);
+@import url(colors.css);
 
-/*error css*/
-@import url(error/error.css);
 body {
     /* background: var(--main-bg-color); */
     min-height: 100dvh;
