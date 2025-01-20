@@ -70,6 +70,16 @@
 }
 
 
+/*error of the field*/
+.error_field {
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(197 125 125);
+    border-radius: 5px;
+}
+
 /*form footer*/
 .form_footer {
     background-color: var(--general-form-bg);

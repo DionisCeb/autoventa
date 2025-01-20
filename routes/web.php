@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarController;
 
 
 /*
@@ -64,6 +65,8 @@ Route::get('/attributions', function () {
   * Create car
   */
 
-  Route::get('/car/create', function () {
-    return view('car.create');
-});
+// Route to show the car creation form
+Route::get('/car/create', [CarController::class, 'create'])->name('car.create');
+
+// Route to handle form submission and store the car data
+Route::post('/car/store', [CarController::class, 'store'])->name('car.store');
