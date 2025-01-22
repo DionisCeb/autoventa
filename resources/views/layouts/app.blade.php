@@ -38,7 +38,7 @@
                 </form> -->
             @else
                 <!-- Login button -->
-                <a href="{{ route('auth.login') }}" class="btn btn-no-bg">Login</a>
+                <a href="{{ route('login') }}" class="btn btn-no-bg">Login</a>
                 <!-- Contact Us button -->
                 <a href="/contact" class="btn">Contact Us</a>
             @endif
@@ -60,7 +60,7 @@
                     </div>
             @else
                 <!-- Login button -->
-                <a href="{{ route('auth.login') }}" class="btn btn-no-bg">Login</a>
+                <a href="{{ route('login') }}" class="btn btn-no-bg">Login</a>
             @endif
             <li><a href="/" role="menuitem">Home</a></li>
             <li><a href="/about" role="menuitem">About</a></li>

@@ -77,7 +77,7 @@ class CarController extends Controller
         }
 
         // Redirect with a success message
-        return redirect()->route('car.create')->with('success', 'Car created successfully with images!');
+        return redirect()->route('car.index')->with('success', 'Car created successfully with images!');
     }
 
 

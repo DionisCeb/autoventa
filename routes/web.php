@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarController;
+use Illuminate\Support\Facades\Auth;
 
-
+Auth::routes();
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,29 @@ use App\Http\Controllers\CarController;
 |
 */
 
+
+ /**
+  * Create car
+  */
+
+// Group routes that require authentication
+Route::middleware('auth')->group(function () {
+    // Route to show the car creation form
+});
+
+/* Route::get('/car/create', [CarController::class, 'create'])->name('car.create');
+
+// Route to handle form submission and store the car data
+Route::post('/car/store', [CarController::class, 'store'])->name('car.store'); */
+
+Route::middleware('auth')->group(function () {
+    Route::get('/car/create', [CarController::class, 'create'])->name('car.create');
+    Route::post('/car/store', [CarController::class, 'store'])->name('car.store');
+    Route::get('/profile', function () {
+        return view('profile.index');
+    });
+});
+
 /**
  * User create
  */
@@ -25,7 +49,7 @@ Route::post('/auth', [AuthController::class, 'create'])->name('auth.create');
 /**
  * Login
  */
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
@@ -34,9 +58,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/profile', function () {
-    return view('profile.index');
-});
 Route::get('/about', function () {
     return view('about.index');
 });
@@ -64,13 +85,3 @@ Route::get('/attributions', function () {
 /**
  * Admin features
  */
-
- /**
-  * Create car
-  */
-
-// Route to show the car creation form
-Route::get('/car/create', [CarController::class, 'create'])->name('car.create');
-
-// Route to handle form submission and store the car data
-Route::post('/car/store', [CarController::class, 'store'])->name('car.store');

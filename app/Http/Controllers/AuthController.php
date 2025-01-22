@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -53,13 +55,13 @@ class AuthController extends Controller
          // Attempt to find the user by email
          $user = User::where('email', $request->email)->first();
  
-         if ($user && Hash::check($request->password, $user->password)) {
-             // Store user name in session
-             session(['user_name' => $user->name]);
- 
-             // Redirect to catalog page after successful login
-             return redirect('/profile')->with('success', 'Login successful!');
-         }
+         // Attempt to log in the user
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $request->session()->regenerate(); // Prevent session fixation attacks
+
+            // Redirect to profile or intended page
+            return redirect()->intended('/profile')->with('success', 'Login successful!');
+        }
  
          // If login fails, redirect back with error message
          return back()->withErrors(['email' => 'Invalid credentials.'])->withInput();

@@ -46,13 +46,17 @@
                 </div>
                 <img src="https://img.icons8.com/?size=100&id=98971&format=png&color=000000" alt="arrow right">
             </div>
-            <div class="link">
-                <div class="link-item">
-                    <i class="fa-solid fa-car"></i>
-                    <p>Create a Car</p>
+        
+            <a href="/car/create">
+                <div class="link">
+                    <div class="link-item">
+                        <i class="fa-solid fa-car"></i>
+                        <p>Create a Car</p>
+                    </div>
+                    <img src="https://img.icons8.com/?size=100&id=98971&format=png&color=000000" alt="arrow right">
                 </div>
-                <img src="https://img.icons8.com/?size=100&id=98971&format=png&color=000000" alt="arrow right">
-            </div>
+            </a>
+            
             <div class="link">
                 <div class="link-item">
                     <i class="fa-solid fa-box"></i>
