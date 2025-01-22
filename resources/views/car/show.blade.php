@@ -8,53 +8,55 @@
 
            <header class="flex gap30">
                <div class="gallery-container">
-                   <div class="main-image">
-                       <button class="carousel-btn prev-btn">&lt;</button>
-                       <img src="{{ asset('img/gallery/collection/mercedes/c-class-1.jpg') }}" alt="Main Car Image" id="main-image">
-                       <button class="carousel-btn next-btn">&gt;</button>
-                   </div>
+                    <div class="main-image">
+                        <button class="carousel-btn prev-btn">&lt;</button>
+                        <img 
+                            src="{{ $car->images->first() ? Storage::url($car->images->first()->image_path) : asset('img/gallery/collection/default-car.jpg') }}" 
+                            alt="Main Car Image" 
+                            id="main-image"
+                        >
+                        <button class="carousel-btn next-btn">&gt;</button>
+                    </div>
 
                    <div class="car_details_images-grid">
-                       <div class="car_detail_image">
-                           <img src="{{ asset('img/gallery/collection/mercedes/c-class-2.jpg') }}" alt="Thumbnail 1">
-                       </div>
-                       <div class="car_detail_image">
-                           <img src="{{ asset('img/gallery/collection/mercedes/c-class-3.jpg') }}" alt="Thumbnail 2">
-                       </div>
-                       <div class="car_detail_image">
-                           <img src="{{ asset('img/gallery/collection/mercedes/c-class-4.jpg') }}" alt="Thumbnail 3">
-                       </div>
-                       <div class="car_detail_image">
-                           <img src="{{ asset('img/gallery/collection/mercedes/c-class-5.jpg') }}" alt="Thumbnail 4">
-                       </div>
-                       <div class="car_detail_image">
-                           <div class="car_detail_image-overlay">
-                               <span>Images (5)</span>
-                               <img src="{{ asset('img/gallery/collection/mercedes-benz-amg-gt.jpg') }}" alt="Thumbnail 5">
-                           </div>
-                       </div>
-                   </div>
+                    @foreach ($car->images as $index => $image)
+                        @if ($index < 4)
+                            <div class="car_detail_image">
+                                <img src="{{ Storage::url($image->image_path) }}" alt="Thumbnail {{ $index + 1 }}">
+                            </div>
+                        @else
+                            <div class="car_detail_image">
+                                <div class="car_detail_image-overlay">
+                                    <span>Images ({{ $car->images->count() }})</span>
+                                    <img src="{{ Storage::url($image->image_path) }}" alt="Thumbnail {{ $index + 1 }}">
+                                </div>
+                            </div>
+                            @break
+                        @endif
+                    @endforeach
+                    </div>
+
                </div>
            </header>
             <section>
                 <div class="car-details-header">
                     <header class="car-header">
-                        <h1>Mercedes-Benz C Class</h1>
+                        <h1>{{ $car->make }} {{ $car->model }}</h1>
                         <div class="car-header-items flex-al gap20">
                             <div class="">
-                                <span>2021</span>
+                                <span>{{ $car->year }}</span>
                             </div>
                             <div class="dot"></div>
                             <div>
-                                <span>Sedan</span>
+                                <span>{{ $car->type }}</span>
                             </div>
                             <div class="dot"></div>
                             <div>
-                                <span>Gas</span>
+                                <span>{{ $car->fuel_type }}</span>
                             </div>
                         </div>
                         <div class="price">
-                            <span>25000 (£)</span>
+                            <span>{{ number_format($car->price, 2) }} (£)</span>
                         </div>
                         <div class="line"></div>
                     </header>
@@ -62,34 +64,34 @@
                     <div class="car-details-container">
                         <div class="car-detail-description">
                             <h2>Description:</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum magnam sequi explicabo expedita cum est nobis vero vel natus! Minima iusto omnis ipsum dolores vitae perspiciatis animi maxime adipisci repellat mollitia, eos error officiis voluptatibus necessitatibus obcaecati dignissimos quia? Molestiae exercitationem ullam, sit eos libero veniam! Excepturi fugit at laborum repellat provident placeat id nisi nemo? Commodi debitis soluta reprehenderit!</p>
+                            <p>{{ $car->description ?? "Discover the perfect blend of performance, style, and comfort with this exceptional vehicle. Engineered for drivers who appreciate both reliability and innovation, it offers a smooth, responsive driving experience whether you're navigating city streets or exploring the open road. Inside, you'll find a thoughtfully designed interior that prioritizes both functionality and luxury, featuring cutting-edge technology and premium materials. With impressive fuel efficiency, advanced safety features, and a sleek, modern exterior, this car is built to meet your needs while exceeding your expectations. Experience the freedom and confidence of driving a car that is as versatile as your lifestyle." }}</p>
                         </div>
                         <div class="car-details-list-box block">
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> Make:</strong><span>Mercedes Benz</span>
-                            </div>
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> Model:</strong><span>C Class</span>
-                            </div>
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> Year:</strong><span>2021</span>
-                            </div>
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> Color:</strong><span>White</span>
-                            </div>
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> Transmission:</strong><span>Automatic</span>
-                            </div>
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> Condition:</strong><span>New</span>
-                            </div>
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> Fuel Type:</strong><span>Gas</span>
-                            </div>
-                            <div class="car-details-list-item">
-                                <strong><div class="dot"></div> VIN:</strong><span>1VXBR12EXCP901213</span>
-                            </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> Make:</strong><span>{{ $car->make }}</span>
                         </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> Model:</strong><span>{{ $car->model }}</span>
+                        </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> Year:</strong><span>{{ $car->year }}</span>
+                        </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> Color:</strong><span>{{ $car->color ?? 'Not specified' }}</span>
+                        </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> Transmission:</strong><span>{{ $car->transmission }}</span>
+                        </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> Condition:</strong><span>{{ $car->car_condition }}</span>
+                        </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> Fuel Type:</strong><span>{{ $car->fuel_type }}</span>
+                        </div>
+                        <div class="car-details-list-item">
+                            <strong><div class="dot"></div> VIN:</strong><span>{{ $car->vin }}</span>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </section>
@@ -156,50 +158,43 @@
     </main>
 
 
-<script>
-        // Array of all image paths for the carousel
-        // Array of all image paths for the carousel
-        const images = [
-            "{{ asset('img/gallery/collection/mercedes/c-class-1.jpg') }}",
-            "{{ asset('img/gallery/collection/mercedes/c-class-2.jpg') }}",
-            "{{ asset('img/gallery/collection/mercedes/c-class-3.jpg') }}",
-            "{{ asset('img/gallery/collection/mercedes/c-class-4.jpg') }}",
-            "{{ asset('img/gallery/collection/mercedes/c-class-5.jpg') }}",
+    <script>
+    // Array of all image paths for the carousel
+    const images = @json($car->images->map(fn($image) => Storage::url($image->image_path))->toArray());
 
-        ];
+    // Current image index
+    let currentIndex = 0;
 
-        // Current image index
-        let currentIndex = 0;
+    // DOM elements
+    const mainImage = document.getElementById("main-image");
+    const prevButton = document.querySelector(".prev-btn");
+    const nextButton = document.querySelector(".next-btn");
+    const detailImages = document.querySelectorAll(".car_detail_image img");
 
-        // DOM elements
-        const mainImage = document.getElementById("main-image");
-        const prevButton = document.querySelector(".prev-btn");
-        const nextButton = document.querySelector(".next-btn");
-        const detailImages = document.querySelectorAll(".car_detail_image img");
+    // Function to update the main image
+    function updateImage(index) {
+        mainImage.src = images[index];
+    }
 
-        // Function to update the main image
-        function updateImage(index) {
-            mainImage.src = images[index];
-        }
+    // Event listeners for carousel buttons
+    prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage(currentIndex);
+    });
 
-        // Event listeners for carousel buttons
-        prevButton.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
+    nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage(currentIndex);
+    });
+
+    // Event listeners for detail images
+    detailImages.forEach((img, index) => {
+        img.addEventListener("click", () => {
+            currentIndex = index;
             updateImage(currentIndex);
         });
+    });
+</script>
 
-        nextButton.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateImage(currentIndex);
-        });
-
-        // Event listeners for detail images
-        detailImages.forEach((img, index) => {
-            img.addEventListener("click", () => {
-                currentIndex = index;
-                updateImage(currentIndex);
-            });
-        });
-    </script>
 
 @endsection

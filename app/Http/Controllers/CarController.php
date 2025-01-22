@@ -95,4 +95,19 @@ class CarController extends Controller
         return view('car.index', compact('cars'));
     }
 
+
+    /**
+     * Car show
+     */
+
+     public function show($id)
+    {
+        // Retrieve the car by ID with its images
+        $car = Car::with('images')->findOrFail($id);
+
+        // Pass the car to the view
+        return view('car.show', compact('car'));    
+    }
+
+
 }

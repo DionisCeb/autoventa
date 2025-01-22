@@ -43,11 +43,15 @@ Route::get('/about', function () {
 
 
 Route::get('/catalog', [CarController::class, 'index'])->name('car.index');
+/**
+ * Car Show
+ */
+Route::get('/car/{id}', [CarController::class, 'show'])->name('car.show');
 
 
-Route::get('/car', function () {
+/* Route::get('/car', function () {
     return view('car.show');
-});
+}); */
 Route::get('/contact', function () {
     return view('contact.index');
 });
