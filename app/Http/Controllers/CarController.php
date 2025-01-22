@@ -79,4 +79,20 @@ class CarController extends Controller
         // Redirect with a success message
         return redirect()->route('car.create')->with('success', 'Car created successfully with images!');
     }
+
+
+    /**
+     * List all the cars
+     */
+    public function index()
+    {
+        // Retrieve all cars with their main images
+        $cars = Car::with(['images' => function ($query) {
+            $query->where('is_main', true);
+        }])->get();
+
+        // Return the index view with the cars
+        return view('car.index', compact('cars'));
+    }
+
 }

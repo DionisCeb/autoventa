@@ -64,242 +64,54 @@
 
             </header>
             <section class="grid-container">
-
-                <div class="card-car">
-                    <div class="card-car-img">
-                        <img src="{{ asset('img/gallery/collection/audi-rs7.jpg') }}" alt="Audi RS7">
-                        <div class="type-car">
-                            <p>Hatchback</p>
-                        </div>
-                    </div>
-                    <div class="card-car-description">
-                        <div class="car-description-price">
-                            <span>65000£</span>
-                            <h2>Audi RS7 2022 Sportback 4.0 TFSI</h2>
-                        </div>
-                    </div>
-                    <div class="card-car-footer">
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gas-pump"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Fuel Type</span>
-                                <p>Petrol</p>
+                @foreach ($cars as $car)
+                    <div class="card-car">
+                        <div class="card-car-img">
+                            <img src="{{ $car->images->first() ? asset('storage/' . $car->images->first()->image_path) : asset('img/gallery/collection/default-image/default.jpg') }}" alt="{{ $car->make }} {{ $car->model }}">
+                            <div class="type-car">
+                                <p>{{ $car->type }}</p>
                             </div>
                         </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-road"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Mileage</span>
-                                <p>10000 km</p>
+                        <div class="card-car-description">
+                            <div class="car-description-price">
+                                <span>{{ number_format($car->price, 2) }}£</span>
+                                <h2>{{ $car->make }} {{ $car->model }} {{ $car->year }}</h2>
                             </div>
                         </div>
+                        <div class="card-car-footer">
+                            <div class="card-car-footer__item flex-al gap10">
+                                <i class="fa-solid fa-gas-pump"></i>
+                                <div class="card--footer-item__desc">
+                                    <span>Fuel Type</span>
+                                    <p>{{ $car->fuel_type }}</p>
+                                </div>
+                            </div>
 
-                        <div class="vertical-line"></div>
+                            <div class="vertical-line"></div>
 
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gears"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Transmission</span>
-                                <p>Automatic</p>
+                            <div class="card-car-footer__item flex-al gap10">
+                                <i class="fa-solid fa-road"></i>
+                                <div class="card--footer-item__desc">
+                                    <span>Mileage</span>
+                                    <p>{{ number_format($car->mileage) }} km</p>
+                                </div>
+                            </div>
+
+                            <div class="vertical-line"></div>
+
+                            <div class="card-car-footer__item flex-al gap10">
+                                <i class="fa-solid fa-gears"></i>
+                                <div class="card--footer-item__desc">
+                                    <span>Transmission</span>
+                                    <p>{{ $car->transmission }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-car-button">
-                        <a href="/car">VIEW DETAILS <i>→</i></a>
-                    </div>
-                </div>
-
-                <div class="card-car">
-                    <div class="card-car-img">
-                        <img src="{{ asset('img/gallery/collection/bmw-m5.jpg') }}" alt="BMW M5">
-                        <div class="type-car">
-                            <p>Sedan</p>
+                        <div class="card-car-button">
+                            <a href="{{ url('/car', $car->id) }}">VIEW DETAILS <i>→</i></a>
                         </div>
                     </div>
-                    <div class="card-car-description">
-                        <div class="car-description-price">
-                            <span>35000£</span>
-                            <h2>BMW M5 2021 Competition 4.4 V8</h2>
-                        </div>
-                    </div>
-                    <div class="card-car-footer">
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gas-pump"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Fuel Type</span>
-                                <p>Petrol</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-road"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Mileage</span>
-                                <p>12000 km</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gears"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Transmission</span>
-                                <p>Automatic</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-car-button">
-                        <a href="/car">VIEW DETAILS <i>→</i></a>
-                    </div>
-                </div>
-
-                <div class="card-car">
-                    <div class="card-car-img">
-                        <img src="{{ asset('img/gallery/collection/ford-mustang.jpg') }}" alt="Ford Mustang">
-                        <div class="type-car">
-                            <p>Convertible</p>
-                        </div>
-                    </div>
-                    <div class="card-car-description">
-                        <div class="car-description-price">
-                            <span>45000£</span>
-                            <h2>Ford Mustang 2021 5.0 GT Convertible</h2>
-                        </div>
-                    </div>
-                    <div class="card-car-footer">
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gas-pump"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Fuel Type</span>
-                                <p>Petrol</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-road"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Mileage</span>
-                                <p>5000 km</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gears"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Transmission</span>
-                                <p>Manual</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-car-button">
-                        <a href="/car">VIEW DETAILS <i>→</i></a>
-                    </div>
-                </div>
-
-                <div class="card-car">
-                    <div class="card-car-img">
-                        <img src="{{ asset('img/gallery/collection/mercedes-benz-amg-gt.jpg') }}" alt="Mercedes AMG GT">
-                        <div class="type-car">
-                            <p>Coupe</p>
-                        </div>
-                    </div>
-                    <div class="card-car-description">
-                        <div class="car-description-price">
-                            <span>75000£</span>
-                            <h2>Mercedes-Benz AMG GT 2021 4.0 V8</h2>
-                        </div>
-                    </div>
-                    <div class="card-car-footer">
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gas-pump"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Fuel Type</span>
-                                <p>Petrol</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-road"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Mileage</span>
-                                <p>8000 km</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gears"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Transmission</span>
-                                <p>Automatic</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-car-button">
-                        <a href="/car">VIEW DETAILS <i>→</i></a>
-                    </div>
-                </div>
-
-                <div class="card-car">
-                    <div class="card-car-img">
-                        <img src="{{ asset('img/gallery/audi.jpg') }}" alt="audi">
-                        <div class="type-car">
-                            <p>Coupe</p>
-                        </div>
-                    </div>
-                    <div class="card-car-description">
-                        <div class="car-description-price">
-                            <span>17000£</span>
-                            <h2>Audi A7 2021 Luxury Edition 3.0 Turbo</h2>
-                        </div>
-                    </div>
-                    <div class="card-car-footer">
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gas-pump"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Fuel Type</span>
-                                <p>Diesel</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-road"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Mileage</span>
-                                <p>20000 km</p>
-                            </div>
-                        </div>
-
-                        <div class="vertical-line"></div>
-
-                        <div class="card-car-footer__item flex-al gap10">
-                            <i class="fa-solid fa-gears"></i>
-                            <div class="card--footer-item__desc">
-                                <span>Transmission</span>
-                                <p>Automatic</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-car-button">
-                        <a href="/car">VIEW DETAILS <i>→</i></a>
-                    </div>
-                </div>
-
+                @endforeach
             </section>
 
         </div>

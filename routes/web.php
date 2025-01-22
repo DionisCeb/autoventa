@@ -41,9 +41,9 @@ Route::get('/about', function () {
     return view('about.index');
 });
 
-Route::get('/catalog', function () {
-    return view('car.index');
-});
+
+Route::get('/catalog', [CarController::class, 'index'])->name('car.index');
+
 
 Route::get('/car', function () {
     return view('car.show');
